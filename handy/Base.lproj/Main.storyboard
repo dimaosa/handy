@@ -18,17 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jQ-Hx-LAf">
-                                <rect key="frame" x="231" y="280" width="139" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Choose photo"/>
-                                <connections>
-                                    <action selector="choosePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ucg-dV-YSH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8A9-AQ-Nl5">
-                                <rect key="frame" x="261" y="327.5" width="79" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="0.0" y="504.5" width="600" height="87.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <state key="normal" title="Process"/>
                                 <connections>
                                     <action selector="takePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eop-To-sHC"/>
@@ -36,37 +28,77 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LCo-V2-gzd">
-                                <rect key="frame" x="180" y="72" width="240" height="153"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="233"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="153" id="EYi-Lg-Ban"/>
-                                    <constraint firstAttribute="width" constant="240" id="Uno-gE-iAA"/>
+                                    <constraint firstAttribute="height" constant="233" id="7tY-71-YXH"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Sqh-UY-4zt" appends="YES" id="SPL-Py-fZc"/>
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8A9-La-tcT">
-                                <rect key="frame" x="246" y="233" width="109" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="0.0" y="313" width="600" height="87.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
                                 <state key="normal" title="Take photo"/>
                                 <connections>
                                     <action selector="cameraPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rl3-kJ-tgA"/>
                                     <action selector="choosePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uzW-pS-vN3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jQ-Hx-LAf">
+                                <rect key="frame" x="0.0" y="408" width="600" height="88"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="48"/>
+                                <state key="normal" title="Choose photo"/>
+                                <connections>
+                                    <action selector="choosePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ucg-dV-YSH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LCo-V2-gzd" secondAttribute="trailing" constant="-20" id="18q-19-0hS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8A9-La-tcT" secondAttribute="trailing" constant="-20" id="2qJ-zz-3cX"/>
+                            <constraint firstItem="LCo-V2-gzd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="4Ib-7T-K09"/>
+                            <constraint firstItem="1jQ-Hx-LAf" firstAttribute="height" secondItem="8A9-La-tcT" secondAttribute="height" id="4cf-vx-nP2"/>
+                            <constraint firstItem="1jQ-Hx-LAf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="4rn-RV-zP5"/>
+                            <constraint firstItem="1jQ-Hx-LAf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="211" id="7YT-tx-rAU"/>
                             <constraint firstItem="1jQ-Hx-LAf" firstAttribute="top" secondItem="8A9-La-tcT" secondAttribute="bottom" constant="8" symbolic="YES" id="AJU-Sb-H0f"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8A9-AQ-Nl5" secondAttribute="trailing" constant="-20" id="BxR-Wj-t3l"/>
                             <constraint firstItem="LCo-V2-gzd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D9p-37-NFT"/>
+                            <constraint firstItem="LCo-V2-gzd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="GuI-LP-WRt"/>
                             <constraint firstItem="8A9-AQ-Nl5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HiQ-jr-nBN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1jQ-Hx-LAf" secondAttribute="trailing" constant="-20" id="Idl-zT-h01"/>
                             <constraint firstItem="1jQ-Hx-LAf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Py8-WJ-lw5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1jQ-Hx-LAf" secondAttribute="trailing" constant="210" id="TcA-Pq-j0R"/>
+                            <constraint firstItem="1jQ-Hx-LAf" firstAttribute="top" secondItem="8A9-La-tcT" secondAttribute="bottom" constant="8" symbolic="YES" id="VuI-rR-R0L"/>
                             <constraint firstItem="8A9-AQ-Nl5" firstAttribute="top" secondItem="1jQ-Hx-LAf" secondAttribute="bottom" constant="8" id="f0N-dA-U3O"/>
                             <constraint firstItem="1jQ-Hx-LAf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gZv-dm-xfQ"/>
+                            <constraint firstItem="8A9-AQ-Nl5" firstAttribute="height" secondItem="8A9-La-tcT" secondAttribute="height" id="hIe-H4-Zj0"/>
+                            <constraint firstItem="8A9-AQ-Nl5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="hSh-98-fAN"/>
+                            <constraint firstItem="8A9-La-tcT" firstAttribute="top" secondItem="LCo-V2-gzd" secondAttribute="bottom" constant="8" symbolic="YES" id="iOU-Kw-7kd"/>
+                            <constraint firstItem="8A9-La-tcT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="jd2-Mv-OyX"/>
+                            <constraint firstItem="8A9-AQ-Nl5" firstAttribute="top" secondItem="1jQ-Hx-LAf" secondAttribute="bottom" constant="8" symbolic="YES" id="lgN-Id-aiC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8A9-AQ-Nl5" secondAttribute="bottom" constant="8" symbolic="YES" id="oOb-2E-xYj"/>
+                            <constraint firstItem="8A9-AQ-Nl5" firstAttribute="width" secondItem="8A9-La-tcT" secondAttribute="width" id="rfs-pf-KGM"/>
                             <constraint firstItem="LCo-V2-gzd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="u1l-oT-Jfj"/>
                             <constraint firstItem="8A9-La-tcT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wnn-Se-UoO"/>
+                            <constraint firstItem="1jQ-Hx-LAf" firstAttribute="width" secondItem="8A9-La-tcT" secondAttribute="width" id="zsH-g1-et6"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="D9p-37-NFT"/>
+                                <exclude reference="u1l-oT-Jfj"/>
+                                <exclude reference="wnn-Se-UoO"/>
+                                <exclude reference="7YT-tx-rAU"/>
+                                <exclude reference="AJU-Sb-H0f"/>
+                                <exclude reference="Py8-WJ-lw5"/>
+                                <exclude reference="TcA-Pq-j0R"/>
+                                <exclude reference="gZv-dm-xfQ"/>
+                                <exclude reference="HiQ-jr-nBN"/>
+                                <exclude reference="f0N-dA-U3O"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Menu" id="F7C-TU-CJr"/>
                     <connections>
@@ -74,11 +106,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Sqh-UY-4zt">
-                    <connections>
-                        <action selector="tap:" destination="BYZ-38-t0r" id="J7M-6A-IgT"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Sqh-UY-4zt"/>
             </objects>
             <point key="canvasLocation" x="1057" y="337"/>
         </scene>

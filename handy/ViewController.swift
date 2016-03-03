@@ -12,24 +12,8 @@ class ViewController: UIViewController,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate
 {
-    @IBAction func tap(sender: UITapGestureRecognizer) {}
-
     
-    @IBAction func cameraPhoto(sender: AnyObject) {
-        if (UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil){
-            picker.allowsEditing = false
-            picker.sourceType = .Camera
-            picker.cameraCaptureMode = .Photo
-            picker.modalPresentationStyle = .FullScreen
-            presentViewController(picker, animated: true) { () -> Void in
-            NSLog("Camera! yep")
-        }
-        } else {
-            noCamera()
-            NSLog("No Fucking camera, poor guy!")
-        }
-        
-    }
+    var picker: UIImagePickerController!
 
     func noCamera(){
         let alertVC = UIAlertController(
@@ -48,7 +32,6 @@ class ViewController: UIViewController,
     
     @IBOutlet weak var imageView: UIImageView!
 
-    let picker = UIImagePickerController()
     
     var currentImage = UIImage() {
         didSet {
@@ -57,25 +40,33 @@ class ViewController: UIViewController,
             performSegueWithIdentifier(Constants.choosePhotoIdentifier, sender: nil)
         }
     }
-    
-    @IBAction func choosePhoto(sender: AnyObject) {
-        choosePhotoFromLibrary()
+    @IBAction func cameraPhoto(sender: AnyObject) {
+        if (UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil){
+            picker = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = false
+            picker.sourceType = .Camera
+            presentViewController(picker, animated: true,completion:nil)
+        } else {
+            noCamera()
+            NSLog("No Fucking camera, poor guy!")
+        }
+        
     }
-    
-    func choosePhotoFromLibrary(){
+
+    @IBAction func choosePhoto(sender: AnyObject) {
+        picker = UIImagePickerController()
+        picker.delegate = self
         picker.allowsEditing = false
         picker.sourceType = .PhotoLibrary
         presentViewController(picker, animated: true) { () -> Void in
-        NSLog("Pick from Photo Library!")
+            NSLog("Pick from Photo Library!")
+        }
     }
-
-    }
+    
     @IBAction func takePhoto(sender: AnyObject) {}
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        picker.delegate = self
-        
         tagGestureConfiguration()
     }
     //MARK: Configuration function
