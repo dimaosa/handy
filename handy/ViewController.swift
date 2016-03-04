@@ -37,10 +37,11 @@ class ViewController: UIViewController,
         didSet {
             imageView.userInteractionEnabled = true
             NSLog("New image is set!")
-            performSegueWithIdentifier(Constants.choosePhotoIdentifier, sender: nil)
         }
     }
     @IBAction func cameraPhoto(sender: AnyObject) {
+        
+        //check if camera is available
         if (UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil){
             picker = UIImagePickerController()
             picker.delegate = self
@@ -51,7 +52,6 @@ class ViewController: UIViewController,
             noCamera()
             NSLog("No Fucking camera, poor guy!")
         }
-        
     }
 
     @IBAction func choosePhoto(sender: AnyObject) {

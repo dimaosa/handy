@@ -14,6 +14,7 @@
 		D2521BF51C87311600F6C68E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2521BF31C87311600F6C68E /* LaunchScreen.storyboard */; };
 		D2521BFD1C87327500F6C68E /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521BFC1C87327500F6C68E /* PhotoViewController.swift */; };
 		D2521C001C885A4A00F6C68E /* ImageConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521BFF1C885A4A00F6C68E /* ImageConfigurationModel.swift */; };
+		D2521C221C89F7BB00F6C68E /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521C211C89F7BB00F6C68E /* ImageUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		D2521BF61C87311600F6C68E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2521BFC1C87327500F6C68E /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		D2521BFF1C885A4A00F6C68E /* ImageConfigurationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageConfigurationModel.swift; sourceTree = "<group>"; };
+		D2521C211C89F7BB00F6C68E /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				D2521BEA1C87311600F6C68E /* AppDelegate.swift */,
 				D2521BFF1C885A4A00F6C68E /* ImageConfigurationModel.swift */,
+				D2521C211C89F7BB00F6C68E /* ImageUtil.swift */,
 				D2521BFE1C88309300F6C68E /* Controllers */,
 				D2521BEE1C87311600F6C68E /* Main.storyboard */,
 				D2521BF11C87311600F6C68E /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 				D2521BED1C87311600F6C68E /* ViewController.swift in Sources */,
 				D2521BEB1C87311600F6C68E /* AppDelegate.swift in Sources */,
 				D2521BFD1C87327500F6C68E /* PhotoViewController.swift in Sources */,
+				D2521C221C89F7BB00F6C68E /* ImageUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
