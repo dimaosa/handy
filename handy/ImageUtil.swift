@@ -104,13 +104,13 @@ class ImageUtil: NSObject {
         return newPoint
     }
     
-    static func applyBlurEffect(image: UIImage){
-        var imageToBlur = CIImage(image: image)
-        var blurfilter = CIFilter(name: "CIGaussianBlur")
+    static func applyBlurEffect(image: UIImage) -> UIImage?{
+        let imageToBlur = CIImage(image: image)
+        let blurfilter = CIFilter(name: "CIGaussianBlur")
         blurfilter!.setValue(imageToBlur, forKey: "inputImage")
-        var resultImage = blurfilter!.valueForKey("outputImage") as! CIImage
-        var blurredImage: UIImage? = UIImage(CIImage: resultImage)
+        let resultImage = blurfilter!.valueForKey("outputImage") as! CIImage
+        let blurredImage: UIImage? = UIImage(CIImage: resultImage)
         
-        
+        return blurredImage
     }
 }
