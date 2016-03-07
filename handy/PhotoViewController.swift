@@ -84,6 +84,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         )
         let blurEffect = UIBlurEffect(style: .Light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
         //always fill the view
         blurEffectView.frame = self.view.bounds
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]

@@ -36,6 +36,9 @@ class ViewController: UIViewController,
     var currentImage = UIImage() {
         didSet {
             imageView.userInteractionEnabled = true
+            
+            //TODO: !!!!!!!!!change THIS!!!!!!!!!!!! it always append new layer
+            createBlurBackground()
             NSLog("New image is set!")
         }
     }
@@ -68,6 +71,7 @@ class ViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         tagGestureConfiguration()
+        
     }
     //MARK: Configuration function
     
@@ -111,6 +115,7 @@ class ViewController: UIViewController,
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier{
+            print(identifier)
             switch identifier {
             case Constants.choosePhotoIdentifier:
                 NSLog("Constants.choosePhotoIdentifier")
@@ -126,11 +131,39 @@ class ViewController: UIViewController,
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        if imageView.image == nil {
+            imageView.image = UIImage(named: "wo")
+            imageView.layer.cornerRadius = imageView.frame.size.width / 2
+            imageView.layer.masksToBounds = true
+        }
         super.viewWillAppear(animated)
     }
     override func viewWillDisappear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillAppear(animated)
+    }
+    
+    func createBlurBackground() {
+        
+
+        let bckgrndImgViw = UIImageView()
+        bckgrndImgViw.image = currentImage
+        bckgrndImgViw.contentMode = .ScaleAspectFill
+        bckgrndImgViw.frame = CGRectMake(
+            0,
+            0,
+            UIScreen.mainScreen().bounds.width,
+            UIScreen.mainScreen().bounds.height
+        )
+        let blurEffect = UIBlurEffect(style: .Light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
+        //always fill the view
+        blurEffectView.frame = self.view.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        bckgrndImgViw.addSubview(blurEffectView)
+        self.view.insertSubview(bckgrndImgViw, atIndex: 0)
     }
 }
 
