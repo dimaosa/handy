@@ -8,45 +8,47 @@
 
 import UIKit
 
+
+
 class PhotoViewController: UIViewController, UIScrollViewDelegate {
 
-    @IBAction func doneButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { () -> Void in
-            NSLog("Get the fuck ou of here")
-        }
-    }
     
     var image: UIImage!
     
-    private struct Constants{
-        struct Screen {
-            static let screen = UIScreen.mainScreen().bounds.size
-        }
-        
-        struct HandNexus4 {
-            static let startPoint = CGPoint(
-                x: Screen.screen.width * 0.241,
-                y: Screen.screen.height * 0.29
-            )
-            static let screenSize = CGSize(
-                width: Screen.screen.width * 0.785 - startPoint.x,
-                height: Screen.screen.height * 0.70 - startPoint.y)
-            static let screenPoints = [
-                CGPoint(x: startPoint.x, y: startPoint.y),
-                CGPoint(x: startPoint.x + 50, y: startPoint.y),
-                CGPoint(x: startPoint.x + 50, y: startPoint.y + 50),
-                CGPoint(x: startPoint.x, y: startPoint.y + 50)
-            ]
-        }
-        struct Hand {
-            static let image = UIImage(named: "cam")
-        }
-        
+    @IBOutlet weak var mainImageView: UIImageView!
+    
+    var sizeMainImageView: CGSize {
+        return mainImageView.frame.size
     }
+    
+//    struct Constants{
+//        
+//        var screen: CGSize = CGSize(width: 10, height: 10)
+//        
+//        struct HandNexus4 {
+//            var startPoint = CGPoint(
+//                x: screen.width * 0.241,
+//                y: screen!.height * 0.29
+//            )
+//            let screenSize = CGSize(
+//                width: Screen.screen.width * 0.785 - startPoint.x,
+//                height: Screen.screen.height * 0.70 - startPoint.y)
+//            static let screenPoints = [
+//                CGPoint(x: startPoint.x, y: startPoint.y),
+//                CGPoint(x: startPoint.x + 50, y: startPoint.y),
+//                CGPoint(x: startPoint.x + 50, y: startPoint.y + 50),
+//                CGPoint(x: startPoint.x, y: startPoint.y + 50)
+//            ]
+//        }
+//        struct Hand {
+//            static let image = UIImage(named: "cam")
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(mainImageView.frame.size)
         //Background blur imageView with originalPhoto
         createBlurBackground()
         
@@ -69,7 +71,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
             Constants.Screen.screen.width,
             Constants.Screen.screen.height
         )
-        self.view.addSubview(phone)
+        mainImageView.addSubview(phone)
     }
     
     func createBlurBackground() {
@@ -86,10 +88,11 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
         //always fill the view
-        blurEffectView.frame = self.view.bounds
+        blurEffectView.frame = mainImageView.bounds
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         bckgrndImgViw.addSubview(blurEffectView)
-        self.view.addSubview(bckgrndImgViw)
+        bckgrndImgViw.clipsToBounds = true
+        mainImageView.addSubview(bckgrndImgViw)
     }
     
     
@@ -115,6 +118,10 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(onScreenImgViw)
         view.addSubview(scrollView)
         
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        super.viewWillAppear(animated)
     }
     
     //MARK! - scrollView Zoom

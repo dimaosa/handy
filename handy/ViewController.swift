@@ -13,6 +13,8 @@ class ViewController: UIViewController,
     UINavigationControllerDelegate
 {
     
+    
+    
     var picker: UIImagePickerController!
 
     func noCamera(){
@@ -30,18 +32,15 @@ class ViewController: UIViewController,
             completion: nil)
     }
     
-    @IBOutlet weak var imageView: UIImageView!
-
     
     var currentImage = UIImage() {
         didSet {
-            imageView.userInteractionEnabled = true
-            
-            //TODO: !!!!!!!!!change THIS!!!!!!!!!!!! it always append new layer
-            createBlurBackground()
             NSLog("New image is set!")
+            self.performSegueWithIdentifier(Constants.choosePhotoIdentifier, sender: self)
         }
     }
+    
+    @IBOutlet weak var buttonCamera: UIButton!
     @IBAction func cameraPhoto(sender: AnyObject) {
         
         //check if camera is available
@@ -67,37 +66,16 @@ class ViewController: UIViewController,
         }
     }
     
-    @IBAction func takePhoto(sender: AnyObject) {}
     override func viewDidLoad() {
         super.viewDidLoad()
-        tagGestureConfiguration()
-        
+        buttonCamera.imageView!.tintColor = UIColor.blackColor()
     }
     //MARK: Configuration function
     
-    func tagGestureConfiguration() {
-        
-        // UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc]
-        //initWithTarget:self action:@selector(respondToTapGesture:)];
-        let tapRecognizer = UITapGestureRecognizer(
-            target: self,
-            action: Selector("tapOnImageView:")
-        )
-        self.imageView.addGestureRecognizer(tapRecognizer)
-    }
-    
-    func tapOnImageView(sender: UITapGestureRecognizer) {
-        performSegueWithIdentifier(Constants.choosePhotoIdentifier, sender: nil)
-        NSLog("tapOnImageView")
-        
-    }
-
     //MARK: Delegates
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         currentImage = chosenImage
-        imageView.contentMode = .ScaleAspectFit
-        imageView.image = chosenImage
         dismissViewControllerAnimated(true) { () -> Void in
             NSLog("Get out from imagePickerController")
         }
@@ -131,16 +109,10 @@ class ViewController: UIViewController,
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        
-        if imageView.image == nil {
-            imageView.image = UIImage(named: "wo")
-            imageView.layer.cornerRadius = imageView.frame.size.width / 2
-            imageView.layer.masksToBounds = true
-        }
         super.viewWillAppear(animated)
     }
     override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        //self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillAppear(animated)
     }
     

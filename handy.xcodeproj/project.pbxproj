@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2226F1D1C902E5A0020B9C7 /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2226F1C1C902E5A0020B9C7 /* Phone.swift */; };
 		D2521BEB1C87311600F6C68E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521BEA1C87311600F6C68E /* AppDelegate.swift */; };
 		D2521BED1C87311600F6C68E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521BEC1C87311600F6C68E /* ViewController.swift */; };
 		D2521BF01C87311600F6C68E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2521BEE1C87311600F6C68E /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D2226F1C1C902E5A0020B9C7 /* Phone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		D2521BE71C87311600F6C68E /* handy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = handy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2521BEA1C87311600F6C68E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2521BEC1C87311600F6C68E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				D2521C211C89F7BB00F6C68E /* ImageUtil.swift */,
 				D2521BFE1C88309300F6C68E /* Controllers */,
 				D2521BEE1C87311600F6C68E /* Main.storyboard */,
+				D2226F1C1C902E5A0020B9C7 /* Phone.swift */,
 				D2521BF11C87311600F6C68E /* Assets.xcassets */,
 				D2521BF31C87311600F6C68E /* LaunchScreen.storyboard */,
 				D2521BF61C87311600F6C68E /* Info.plist */,
@@ -157,6 +160,7 @@
 				D2521BED1C87311600F6C68E /* ViewController.swift in Sources */,
 				D2521BEB1C87311600F6C68E /* AppDelegate.swift in Sources */,
 				D2521BFD1C87327500F6C68E /* PhotoViewController.swift in Sources */,
+				D2226F1D1C902E5A0020B9C7 /* Phone.swift in Sources */,
 				D2521C221C89F7BB00F6C68E /* ImageUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +311,7 @@
 				D2521BFB1C87311600F6C68E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
