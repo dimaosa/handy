@@ -23,8 +23,8 @@ class PhoneSkin {
     }
     var screenSize: CGSize {
         return CGSize(
-            width: sizeOfParentView!.width * 0.56 - startPoint.x,
-            height: sizeOfParentView!.height * 0.80 - startPoint.y
+            width: sizeOfParentView!.width * 0.573 - startPoint.x,
+            height: sizeOfParentView!.height * 0.776 - startPoint.y
         )
     }
     init(name phoneName: String?, size parentSize: CGSize?, hand handImageName: UIImage?, startPScale: (Double, Double)){

@@ -43,7 +43,10 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Bhb-pA-1bh" secondAttribute="height" multiplier="1:1" id="vJR-ph-4Zr"/>
                                 </constraints>
-                                <state key="normal" image="Camera"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="Camera">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="cameraPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9YW-8l-aio"/>
                                 </connections>
@@ -101,7 +104,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saM-Vu-2dd">
-                                <rect key="frame" x="-4" y="104" width="328" height="328"/>
+                                <rect key="frame" x="0.0" y="104" width="320" height="320"/>
                                 <color key="backgroundColor" red="0.7843137255" green="0.86666666670000003" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="saM-Vu-2dd" secondAttribute="height" multiplier="1:1" id="mhQ-gS-n8Y"/>
@@ -112,13 +115,14 @@
                         <constraints>
                             <constraint firstItem="saM-Vu-2dd" firstAttribute="top" secondItem="6i3-l6-usC" secondAttribute="bottom" constant="40" id="Ki2-ru-PiL"/>
                             <constraint firstItem="saM-Vu-2dd" firstAttribute="centerX" secondItem="lWM-hc-8dF" secondAttribute="centerX" id="ML6-Wg-dXr"/>
-                            <constraint firstItem="saM-Vu-2dd" firstAttribute="leading" secondItem="lWM-hc-8dF" secondAttribute="leadingMargin" constant="-20" id="WN2-nZ-gdd"/>
+                            <constraint firstItem="saM-Vu-2dd" firstAttribute="leading" secondItem="lWM-hc-8dF" secondAttribute="leadingMargin" constant="-16" id="WN2-nZ-gdd"/>
                             <constraint firstItem="veo-uc-BaK" firstAttribute="top" secondItem="lWM-hc-8dF" secondAttribute="topMargin" constant="20" id="mJf-wz-IYg"/>
                             <constraint firstItem="veo-uc-BaK" firstAttribute="leading" secondItem="lWM-hc-8dF" secondAttribute="leadingMargin" id="qkJ-Ad-4la"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="saM-Vu-2dd" secondAttribute="trailing" constant="-20" id="vEq-xa-Yas"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="saM-Vu-2dd" secondAttribute="trailing" constant="-16" id="vEq-xa-Yas"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1xx-aM-oBy">
+                        <barButtonItem key="backBarButtonItem" title="-" id="Zj9-rr-XaT"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="XQV-5P-dPc">
                             <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>

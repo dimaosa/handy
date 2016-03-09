@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+import Nuke
 
 class PhotoViewController: UIViewController, UIScrollViewDelegate {
 
@@ -21,40 +21,16 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         return mainImageView.frame.size
     }
     
-//    struct Constants{
-//        
-//        var screen: CGSize = CGSize(width: 10, height: 10)
-//        
-//        struct HandNexus4 {
-//            var startPoint = CGPoint(
-//                x: screen.width * 0.241,
-//                y: screen!.height * 0.29
-//            )
-//            let screenSize = CGSize(
-//                width: Screen.screen.width * 0.785 - startPoint.x,
-//                height: Screen.screen.height * 0.70 - startPoint.y)
-//            static let screenPoints = [
-//                CGPoint(x: startPoint.x, y: startPoint.y),
-//                CGPoint(x: startPoint.x + 50, y: startPoint.y),
-//                CGPoint(x: startPoint.x + 50, y: startPoint.y + 50),
-//                CGPoint(x: startPoint.x, y: startPoint.y + 50)
-//            ]
-//        }
-//        struct Hand {
-//            static let image = UIImage(named: "cam")
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let Nexus4Hand = PhoneSkin(name: "Nexus4MenHand", size: CGSize(width: 375, height: 375), hand: UIImage(named: "handLGG4"), startPScale: (0.35, 0.46))
+        let Nexus4Hand = PhoneSkin(name: "Nexus4MenHand", size: CGSize(width: 375, height: 375), hand: UIImage(named: "handLGG4"), startPScale: (0.354, 0.384))
         
         NSLog("Nexus4Hand.sizeOfParentView = \(Nexus4Hand.sizeOfParentView)")
         NSLog("Size of UIScreen = \(UIScreen.mainScreen().bounds.size) ")
         //Background blur imageView with originalPhoto
         createBlurBackground(sizeMainImageView)
-        
+
         //On Screen imageView with originalPhoto
         createOnScreenScrollView(Nexus4Hand)
         
@@ -89,21 +65,23 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         bckgrndImgViw.frame = CGRectMake(
             0,
             0,
-            UIScreen.mainScreen().bounds.size.width,
-            UIScreen.mainScreen().bounds.size.width
+            UIScreen.mainScreen().bounds.size.width + 10,
+            UIScreen.mainScreen().bounds.size.width + 10
         )
-        let blurEffect = UIBlurEffect(style: .Light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        //let blurEffect = UIBlurEffect(style: .Light)
+        //let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
         //always fill the view
-        blurEffectView.frame = CGRectMake(
-            0,
-            0,
-            UIScreen.mainScreen().bounds.size.width,
-            UIScreen.mainScreen().bounds.size.width
-        )
-        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
-        bckgrndImgViw.addSubview(blurEffectView)
+        //blurEffectView.frame = CGRectMake(
+//            0,
+//            0,
+//            UIScreen.mainScreen().bounds.size.width + 10,
+//            UIScreen.mainScreen().bounds.size.width + 10
+//        )
+        //blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        //bckgrndImgViw.addSubview(blurEffectView)
+        
+        
         bckgrndImgViw.clipsToBounds = true
         mainImageView.addSubview(bckgrndImgViw)
     }
@@ -134,6 +112,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     }
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         super.viewWillAppear(animated)
     }
     

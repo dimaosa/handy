@@ -1,0 +1,6 @@
+framework module Pods_handy {
+  umbrella header "Pods-handy-umbrella.h"
+
+  export *
+  module * { export * }
+}

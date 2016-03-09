@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Nuke
 
 class ViewController: UIViewController,
     UIImagePickerControllerDelegate,
     UINavigationControllerDelegate
 {
+    
     
     
     
@@ -68,7 +70,8 @@ class ViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buttonCamera.imageView!.tintColor = UIColor.blackColor()
+
+        
     }
     //MARK: Configuration function
     
@@ -110,7 +113,9 @@ class ViewController: UIViewController,
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        
     }
+    
     override func viewWillDisappear(animated: Bool) {
         //self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillAppear(animated)
