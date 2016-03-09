@@ -100,8 +100,9 @@
                                     <action selector="doneButtonPressed:" destination="VGG-Y2-xEx" eventType="touchUpInside" id="XY7-7B-5eu"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saM-Vu-2dd">
-                                <rect key="frame" x="-4" y="72" width="328" height="328"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saM-Vu-2dd">
+                                <rect key="frame" x="-4" y="104" width="328" height="328"/>
+                                <color key="backgroundColor" red="0.7843137255" green="0.86666666670000003" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="saM-Vu-2dd" secondAttribute="height" multiplier="1:1" id="mhQ-gS-n8Y"/>
                                 </constraints>
@@ -109,7 +110,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="saM-Vu-2dd" firstAttribute="top" secondItem="6i3-l6-usC" secondAttribute="bottom" constant="8" symbolic="YES" id="Ki2-ru-PiL"/>
+                            <constraint firstItem="saM-Vu-2dd" firstAttribute="top" secondItem="6i3-l6-usC" secondAttribute="bottom" constant="40" id="Ki2-ru-PiL"/>
                             <constraint firstItem="saM-Vu-2dd" firstAttribute="centerX" secondItem="lWM-hc-8dF" secondAttribute="centerX" id="ML6-Wg-dXr"/>
                             <constraint firstItem="saM-Vu-2dd" firstAttribute="leading" secondItem="lWM-hc-8dF" secondAttribute="leadingMargin" constant="-20" id="WN2-nZ-gdd"/>
                             <constraint firstItem="veo-uc-BaK" firstAttribute="top" secondItem="lWM-hc-8dF" secondAttribute="topMargin" constant="20" id="mJf-wz-IYg"/>
@@ -128,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ar-qM-12O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1443" y="354"/>
+            <point key="canvasLocation" x="1579" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7fT-9J-3y1">

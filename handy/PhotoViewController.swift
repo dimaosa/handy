@@ -48,47 +48,60 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(mainImageView.frame.size)
+        let Nexus4Hand = PhoneSkin(name: "Nexus4MenHand", size: CGSize(width: 375, height: 375), hand: UIImage(named: "handLGG4"), startPScale: (0.35, 0.46))
+        
+        NSLog("Nexus4Hand.sizeOfParentView = \(Nexus4Hand.sizeOfParentView)")
+        NSLog("Size of UIScreen = \(UIScreen.mainScreen().bounds.size) ")
         //Background blur imageView with originalPhoto
-        createBlurBackground()
+        createBlurBackground(sizeMainImageView)
         
         //On Screen imageView with originalPhoto
-        createOnScreenScrollView()
+        createOnScreenScrollView(Nexus4Hand)
         
         //Phone screen on
-        createPhoneSkinImage()
+        createPhoneSkinImage(Nexus4Hand)
         
     }
     
     //MARK! - Imaage createion
-    func createPhoneSkinImage() {
+    func createPhoneSkinImage(phoneInfo: PhoneSkin) {
         let phone = UIImageView()
-        phone.image = Constants.Hand.image
+        
+        NSLog("mainImageView.bounds.size = \(mainImageView.bounds.size)")
+        NSLog("mainImageView.frame.size = \(mainImageView.frame.size)")
+
+        
+        phone.image = phoneInfo.handImage
         phone.contentMode = .ScaleAspectFill
         phone.frame = CGRectMake(
             0,
             0,
-            Constants.Screen.screen.width,
-            Constants.Screen.screen.height
+            UIScreen.mainScreen().bounds.size.width,
+            UIScreen.mainScreen().bounds.size.width
         )
         mainImageView.addSubview(phone)
     }
     
-    func createBlurBackground() {
+    func createBlurBackground(size: CGSize) {
         let bckgrndImgViw = UIImageView()
         bckgrndImgViw.image = image
         bckgrndImgViw.contentMode = .ScaleAspectFill
         bckgrndImgViw.frame = CGRectMake(
             0,
             0,
-            Constants.Screen.screen.width,
-            Constants.Screen.screen.height
+            UIScreen.mainScreen().bounds.size.width,
+            UIScreen.mainScreen().bounds.size.width
         )
         let blurEffect = UIBlurEffect(style: .Light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
         //always fill the view
-        blurEffectView.frame = mainImageView.bounds
+        blurEffectView.frame = CGRectMake(
+            0,
+            0,
+            UIScreen.mainScreen().bounds.size.width,
+            UIScreen.mainScreen().bounds.size.width
+        )
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         bckgrndImgViw.addSubview(blurEffectView)
         bckgrndImgViw.clipsToBounds = true
@@ -98,15 +111,15 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     
     var onScreenImgViw: UIImageView!
     var scrollView: UIScrollView!
-    func createOnScreenScrollView() {
+    func createOnScreenScrollView(phoneInfo: PhoneSkin) {
         onScreenImgViw = UIImageView(image: image)
         onScreenImgViw.sizeToFit()
-        
+        print("---------phoneInfo.startPoint = \(phoneInfo.startPoint)")
         scrollView = UIScrollView(frame: CGRectMake(
-            Constants.HandNexus4.startPoint.x,
-            Constants.HandNexus4.startPoint.y,
-            Constants.HandNexus4.screenSize.width,
-            Constants.HandNexus4.screenSize.height
+            phoneInfo.startPoint.x + mainImageView.frame.origin.x,
+            phoneInfo.startPoint.y + mainImageView.frame.origin.y,
+            phoneInfo.screenSize.width,
+            phoneInfo.screenSize.height
             )
         )
         scrollView.delegate = self
