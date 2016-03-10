@@ -8,31 +8,40 @@
 
 import Foundation
 import UIKit
+import GPUImage
 
+enum BiggerImageSide {
+    case IDontKnow
+    case Height
+    case Width
+}
 
 class ImageUtil: NSObject {
     
-    static func cropToSquare(image originalImage: UIImage) -> UIImage {
+    static func cropToSquare(image originalImage: UIImage, contextSize: CGSize? = nil) -> UIImage {
         // Create a copy of the image without the imageOrientation property so it is in its native orientation (landscape)
         let contextImage: UIImage = UIImage(CGImage: originalImage.CGImage!)
-        
-        let contextSize: CGSize = contextImage.size
+
+        let _contextSize = contextImage.size
         
         let posX: CGFloat
         let posY: CGFloat
         let width: CGFloat
         let height: CGFloat
         
-        if contextSize.width > contextSize.height {
-            posX = ((contextSize.width - contextSize.height) / 2)
+        var theBiggerSide = BiggerImageSide.IDontKnow
+        if _contextSize.width > _contextSize.height {
+            posX = ((_contextSize.width - _contextSize.height) / 2)
             posY = 0
-            width = contextSize.height
-            height = contextSize.height
+            width = _contextSize.height
+            height = _contextSize.height
+            theBiggerSide = .Width
         } else {
             posX = 0
-            posY = ((contextSize.height - contextSize.width) / 2)
-            width = contextSize.width
-            height = contextSize.width
+            posY = ((_contextSize.height - _contextSize.width) / 2)
+            width = _contextSize.width
+            height = _contextSize.width
+            theBiggerSide = .Height
         }
         
         let rect: CGRect = CGRectMake(posX, posY, width, height)
@@ -40,9 +49,15 @@ class ImageUtil: NSObject {
         // Create bitmap image from context using the rect
         let imageRef: CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, rect)!
         // Create a new image based on the imageRef and rotate back to the original orientation
-        let image: UIImage = UIImage(CGImage: imageRef, scale: originalImage.scale, orientation: originalImage.imageOrientation)
+        let image: UIImage? = UIImage(CGImage: imageRef, scale: originalImage.scale, orientation: originalImage.imageOrientation)
         
-        return image
+        
+        UIGraphicsBeginImageContext(contextSize!)
+        image!.drawInRect(CGRectMake(0, 0, (contextSize?.width)!, (contextSize?.height)!))
+        let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
     }
     static func cropToRect(image originalImage: UIImage,width  _width: CGFloat, height _height: CGFloat) -> UIImage {
         // Create a copy of the image without the imageOrientation property so it is in its native orientation (landscape)
@@ -65,10 +80,9 @@ class ImageUtil: NSObject {
         // Create bitmap image from context using the rect
         let imageRef: CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, rect)!
         // Create a new image based on the imageRef and rotate back to the original orientation
-        let image: UIImage = scaleImageTo(image: UIImage(CGImage: imageRef, scale: originalImage.scale, orientation: originalImage.imageOrientation), scale: 1)!
+        let image: UIImage? = scaleImageTo(image: UIImage(CGImage: imageRef, scale: originalImage.scale, orientation: originalImage.imageOrientation), scale: 1)!
         
-        
-        return image
+        return image!
     }
     static func scaleImageTo(image originalImage: UIImage, scale: Double) -> UIImage? {
         

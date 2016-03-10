@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import GPUImage
 import Nuke
 
 class PhotoViewController: UIViewController, UIScrollViewDelegate {
@@ -24,7 +24,8 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let Nexus4Hand = PhoneSkin(name: "Nexus4MenHand", size: CGSize(width: 375, height: 375), hand: UIImage(named: "handLGG4"), startPScale: (0.354, 0.384))
+        let Nexus4Hand = PhoneSkin(name: "Nexus4MenHand", size: CGSize(width: 375, height: 375), hand: UIImage(named: "handLGG4"), contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776))
+        
         
         NSLog("Nexus4Hand.sizeOfParentView = \(Nexus4Hand.sizeOfParentView)")
         NSLog("Size of UIScreen = \(UIScreen.mainScreen().bounds.size) ")
@@ -59,15 +60,53 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func createBlurBackground(size: CGSize) {
+        
         let bckgrndImgViw = UIImageView()
-        bckgrndImgViw.image = image
-        bckgrndImgViw.contentMode = .ScaleAspectFill
-        bckgrndImgViw.frame = CGRectMake(
-            0,
-            0,
-            UIScreen.mainScreen().bounds.size.width + 10,
-            UIScreen.mainScreen().bounds.size.width + 10
-        )
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+           
+            bckgrndImgViw.image = blurredImageWithImage(
+                ImageUtil.cropToSquare(
+                    image: self.image, contextSize: CGSize(
+                        width: UIScreen.mainScreen().bounds.width,
+                        height: UIScreen.mainScreen().bounds.width
+                    )
+                )
+            )
+            
+            bckgrndImgViw.contentMode = .ScaleAspectFill
+            bckgrndImgViw.clipsToBounds = true
+            bckgrndImgViw.frame = CGRectMake(
+                0,
+                0,
+                UIScreen.mainScreen().bounds.size.width,
+                UIScreen.mainScreen().bounds.size.width
+            )
+            
+            self.mainImageView.insertSubview(bckgrndImgViw, atIndex: 0)
+        }
+
+//        let blurView = GPUImageView(frame: CGRectMake(0,0, UIScreen.mainScreen().bounds.size.width,UIScreen.mainScreen().bounds.size.width))
+//        blurView.contentMode = .ScaleToFill
+//        blurView.clipsToBounds = true
+//        blurView.layer.contentsGravity = kCAGravityTop
+//        
+//        let blurFilter = GPUImageiOSBlurFilter()
+//        
+//        
+//        blurFilter.blurRadiusInPixels = 4.0
+//        
+//        
+//        let picture = GPUImagePicture(image: image)
+//        picture.addTarget(blurFilter)
+//        blurFilter.addTarget(blurView)
+//        
+//        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+//            picture.forceProcessingAtSize(self.sizeMainImageView)
+//
+//            bckgrndImgViw.clipsToBounds = true
+//            self.mainImageView.addSubview(blurView)
+//        }
+        
         //let blurEffect = UIBlurEffect(style: .Light)
         //let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
@@ -82,8 +121,6 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         //bckgrndImgViw.addSubview(blurEffectView)
         
         
-        bckgrndImgViw.clipsToBounds = true
-        mainImageView.addSubview(bckgrndImgViw)
     }
     
     

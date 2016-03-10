@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11A494EA96D825A9F96B2B4E /* Pods_handy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02FBE3C20783A4B2B2F6A504 /* Pods_handy.framework */; };
+		D207C5C61C917A29002A95C9 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D207C5C51C917A29002A95C9 /* CoreImage.framework */; };
 		D2226F1D1C902E5A0020B9C7 /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2226F1C1C902E5A0020B9C7 /* Phone.swift */; };
 		D2521BEB1C87311600F6C68E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521BEA1C87311600F6C68E /* AppDelegate.swift */; };
 		D2521BED1C87311600F6C68E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521BEC1C87311600F6C68E /* ViewController.swift */; };
@@ -18,11 +19,14 @@
 		D2521C001C885A4A00F6C68E /* ImageConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521BFF1C885A4A00F6C68E /* ImageConfigurationModel.swift */; };
 		D2521C221C89F7BB00F6C68E /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2521C211C89F7BB00F6C68E /* ImageUtil.swift */; };
 		D2596E451C9079FE006BE186 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2596E441C9079FE006BE186 /* Helpers.swift */; };
+		D2596E471C908FA6006BE186 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2596E461C908FA6006BE186 /* GPUImage.framework */; };
+		D2596E491C908FA9006BE186 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2596E481C908FA9006BE186 /* Nuke.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		02FBE3C20783A4B2B2F6A504 /* Pods_handy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_handy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9310AA73564C201383FDF3 /* Pods-handy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-handy.release.xcconfig"; path = "Pods/Target Support Files/Pods-handy/Pods-handy.release.xcconfig"; sourceTree = "<group>"; };
+		D207C5C51C917A29002A95C9 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		D2226F1C1C902E5A0020B9C7 /* Phone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		D2521BE71C87311600F6C68E /* handy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = handy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2521BEA1C87311600F6C68E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +41,8 @@
 		D2596E401C907321006BE186 /* handy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "handy-Bridging-Header.h"; sourceTree = "<group>"; };
 		D2596E411C907322006BE186 /* bb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bb.h; sourceTree = "<group>"; };
 		D2596E441C9079FE006BE186 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		D2596E461C908FA6006BE186 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "Pods/../build/Debug-iphoneos/GPUImage.framework"; sourceTree = "<group>"; };
+		D2596E481C908FA9006BE186 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = "Pods/../build/Debug-iphoneos/Nuke.framework"; sourceTree = "<group>"; };
 		E88258656702F6FF27B28156 /* Pods-handy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-handy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-handy/Pods-handy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,6 +51,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D207C5C61C917A29002A95C9 /* CoreImage.framework in Frameworks */,
+				D2596E491C908FA9006BE186 /* Nuke.framework in Frameworks */,
+				D2596E471C908FA6006BE186 /* GPUImage.framework in Frameworks */,
 				11A494EA96D825A9F96B2B4E /* Pods_handy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +73,9 @@
 		8DE2F2B42BAB8BAFE3C48BA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D207C5C51C917A29002A95C9 /* CoreImage.framework */,
+				D2596E481C908FA9006BE186 /* Nuke.framework */,
+				D2596E461C908FA6006BE186 /* GPUImage.framework */,
 				02FBE3C20783A4B2B2F6A504 /* Pods_handy.framework */,
 			);
 			name = Frameworks;
@@ -359,6 +371,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = handy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.my.handyApp.handy;
@@ -374,6 +390,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = handy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ios.my.handyApp.handy;

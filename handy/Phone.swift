@@ -14,23 +14,23 @@ class PhoneSkin {
     let name: String?
     let sizeOfParentView: CGSize?
     let handImage: UIImage?
-    let startPointScale: (Double, Double)
+    let contextScreenSize: CGRect
     var startPoint: CGPoint {
         return CGPoint(
-            x: sizeOfParentView!.width * CGFloat(startPointScale.0),
-            y: sizeOfParentView!.height * CGFloat(startPointScale.1)
+            x: sizeOfParentView!.width * contextScreenSize.origin.x,
+            y: sizeOfParentView!.height * contextScreenSize.origin.y
         )
     }
     var screenSize: CGSize {
         return CGSize(
-            width: sizeOfParentView!.width * 0.573 - startPoint.x,
-            height: sizeOfParentView!.height * 0.776 - startPoint.y
+            width: sizeOfParentView!.width * contextScreenSize.width - startPoint.x,
+            height: sizeOfParentView!.height * contextScreenSize.height - startPoint.y
         )
     }
-    init(name phoneName: String?, size parentSize: CGSize?, hand handImageName: UIImage?, startPScale: (Double, Double)){
+    init(name phoneName: String?, size parentSize: CGSize?, hand handImageName: UIImage?, contextScreenSize con: CGRect){
         name = phoneName
         sizeOfParentView = parentSize
         handImage = handImageName
-        startPointScale = startPScale
+        contextScreenSize = con
     }
 }
