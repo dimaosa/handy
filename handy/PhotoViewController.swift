@@ -12,6 +12,22 @@ import Nuke
 
 class PhotoViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBAction func saveImageBarButton(sender: AnyObject) {
+        UIImageWriteToSavedPhotosAlbum(UIImage.imageWithView(mainImageView), nil, nil, nil);
+        NSLog("Image is saved to library!")
+        let alertVC = UIAlertController(
+            title: "Image is saved to library!",
+            message: "Take a look in your Photo Library",
+            preferredStyle: .Alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style:.Default,
+            handler: nil)
+        alertVC.addAction(okAction)
+        presentViewController(alertVC,
+            animated: true,
+            completion: nil)
+    }
     
     var image: UIImage!
     
@@ -33,7 +49,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         createBlurBackground(sizeMainImageView)
 
         //On Screen imageView with originalPhoto
-        createOnScreenScrollView(Nexus4Hand)
+        //createOnScreenScrollView(Nexus4Hand)
         
         //Phone screen on
         createPhoneSkinImage(Nexus4Hand)
@@ -50,12 +66,14 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         
         phone.image = phoneInfo.handImage
         phone.contentMode = .ScaleAspectFill
+        phone.userInteractionEnabled = true
         phone.frame = CGRectMake(
             0,
             0,
             UIScreen.mainScreen().bounds.size.width,
             UIScreen.mainScreen().bounds.size.width
         )
+        phone.addSubview(createOnScreenScrollView(phone, phoneInfo: phoneInfo))
         mainImageView.addSubview(phone)
     }
     
@@ -126,13 +144,13 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     
     var onScreenImgViw: UIImageView!
     var scrollView: UIScrollView!
-    func createOnScreenScrollView(phoneInfo: PhoneSkin) {
+    func createOnScreenScrollView(parentView: UIView, phoneInfo: PhoneSkin) -> UIScrollView{
         onScreenImgViw = UIImageView(image: image)
         onScreenImgViw.sizeToFit()
         print("---------phoneInfo.startPoint = \(phoneInfo.startPoint)")
         scrollView = UIScrollView(frame: CGRectMake(
-            phoneInfo.startPoint.x + mainImageView.frame.origin.x,
-            phoneInfo.startPoint.y + mainImageView.frame.origin.y,
+            phoneInfo.startPoint.x + parentView.frame.origin.x,
+            phoneInfo.startPoint.y + parentView.frame.origin.y,
             phoneInfo.screenSize.width,
             phoneInfo.screenSize.height
             )
@@ -144,12 +162,12 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         scrollView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight ]
         
         scrollView.addSubview(onScreenImgViw)
-        view.addSubview(scrollView)
+        return scrollView
+        //mainImageView.addSubview(scrollView)
         
     }
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         super.viewWillAppear(animated)
     }
     

@@ -119,6 +119,7 @@ class ViewController: UIViewController,
     override func viewWillDisappear(animated: Bool) {
         //self.navigationController?.setNavigationBarHidden(false, animated: animated)
         super.viewWillAppear(animated)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     }
     
     func createBlurBackground() {

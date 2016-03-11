@@ -103,7 +103,7 @@
                                     <action selector="doneButtonPressed:" destination="VGG-Y2-xEx" eventType="touchUpInside" id="XY7-7B-5eu"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saM-Vu-2dd">
+                            <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saM-Vu-2dd">
                                 <rect key="frame" x="0.0" y="104" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="saM-Vu-2dd" secondAttribute="height" multiplier="1:1" id="mhQ-gS-n8Y"/>
@@ -124,6 +124,9 @@
                         <barButtonItem key="backBarButtonItem" title="-" id="Zj9-rr-XaT"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="XQV-5P-dPc">
                             <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="saveImageBarButton:" destination="VGG-Y2-xEx" id="K4P-5e-0dr"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

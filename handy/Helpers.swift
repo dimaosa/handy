@@ -39,3 +39,13 @@ func blurredImageWithImage(sourceImage: UIImage?) -> UIImage? {
     return retVal
     
 }
+
+extension UIImage {
+    class func imageWithView(view: UIView) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0)
+        view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img
+    }
+}
