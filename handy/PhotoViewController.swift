@@ -11,6 +11,11 @@ import GPUImage
 import Nuke
 
 class PhotoViewController: UIViewController, UIScrollViewDelegate {
+    
+    
+    let FiterImagesNames = ["picGreen", "picMountain", "picRelax", "picSnowRail", "picSkiWhite"]
+    
+    @IBOutlet var filtersScrollView: UIScrollView!
 
     @IBAction func saveImageBarButton(sender: AnyObject) {
         UIImageWriteToSavedPhotosAlbum(UIImage.imageWithView(mainImageView), nil, nil, nil);
@@ -39,6 +44,8 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        createFiltersScrollMenu()
         
         let Nexus4Hand = PhoneSkin(name: "Nexus4MenHand", size: CGSize(width: 375, height: 375), hand: UIImage(named: "handLGG4"), contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776))
         
@@ -80,6 +87,14 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     func createBlurBackground(size: CGSize) {
         
         let bckgrndImgViw = UIImageView()
+        bckgrndImgViw.contentMode = .ScaleAspectFill
+        bckgrndImgViw.clipsToBounds = true
+        bckgrndImgViw.frame = CGRectMake(
+            0,
+            0,
+            UIScreen.mainScreen().bounds.size.width,
+            UIScreen.mainScreen().bounds.size.width
+        )
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
            
             bckgrndImgViw.image = blurredImageWithImage(
@@ -89,18 +104,11 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
                         height: UIScreen.mainScreen().bounds.width
                     )
                 )
+                
             )
-            
-            bckgrndImgViw.contentMode = .ScaleAspectFill
-            bckgrndImgViw.clipsToBounds = true
-            bckgrndImgViw.frame = CGRectMake(
-                0,
-                0,
-                UIScreen.mainScreen().bounds.size.width,
-                UIScreen.mainScreen().bounds.size.width
-            )
-            
-            self.mainImageView.insertSubview(bckgrndImgViw, atIndex: 0)
+//            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                self.mainImageView.insertSubview(bckgrndImgViw, atIndex: 0)
+//            })
         }
 
 //        let blurView = GPUImageView(frame: CGRectMake(0,0, UIScreen.mainScreen().bounds.size.width,UIScreen.mainScreen().bounds.size.width))
@@ -202,5 +210,26 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
         
+    }
+    
+    func createFiltersScrollMenu() {
+        filtersScrollView.userInteractionEnabled = true
+        filtersScrollView.showsHorizontalScrollIndicator = false
+        let bWidthHeight = filtersScrollView.frame.size.height
+        let constShift:CGFloat = 8
+        var x: CGFloat = 0 + constShift //initial x coordinate of a filter button in frames scroll View
+
+        for image in FiterImagesNames {
+            let button = UIButton(frame: CGRectMake(x, 0, bWidthHeight, bWidthHeight))
+            button.userInteractionEnabled = true
+            button.setImage(UIImage(named: image), forState: .Normal)
+            
+            filtersScrollView.addSubview(button)
+            
+            x += bWidthHeight + constShift;
+        }
+        
+        filtersScrollView.contentSize = CGSizeMake(x, bWidthHeight);
+        filtersScrollView.backgroundColor = UIColor.whiteColor()
     }
 }

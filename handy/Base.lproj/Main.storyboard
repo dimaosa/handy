@@ -109,12 +109,22 @@
                                     <constraint firstAttribute="width" secondItem="saM-Vu-2dd" secondAttribute="height" multiplier="1:1" id="mhQ-gS-n8Y"/>
                                 </constraints>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jD-hX-4Hr">
+                                <rect key="frame" x="0.0" y="432" width="320" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="csp-jF-c2f"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="4jD-hX-4Hr" secondAttribute="trailing" constant="-16" id="7Q6-Az-6Jg"/>
+                            <constraint firstItem="4jD-hX-4Hr" firstAttribute="leading" secondItem="lWM-hc-8dF" secondAttribute="leadingMargin" constant="-16" id="F31-f4-bCL"/>
                             <constraint firstItem="saM-Vu-2dd" firstAttribute="top" secondItem="6i3-l6-usC" secondAttribute="bottom" constant="40" id="Ki2-ru-PiL"/>
                             <constraint firstItem="saM-Vu-2dd" firstAttribute="centerX" secondItem="lWM-hc-8dF" secondAttribute="centerX" id="ML6-Wg-dXr"/>
                             <constraint firstItem="saM-Vu-2dd" firstAttribute="leading" secondItem="lWM-hc-8dF" secondAttribute="leadingMargin" constant="-16" id="WN2-nZ-gdd"/>
+                            <constraint firstItem="4jD-hX-4Hr" firstAttribute="top" secondItem="saM-Vu-2dd" secondAttribute="bottom" constant="8" symbolic="YES" id="e1k-Za-pUB"/>
+                            <constraint firstItem="4jD-hX-4Hr" firstAttribute="width" secondItem="saM-Vu-2dd" secondAttribute="width" id="ikv-VG-lln"/>
                             <constraint firstItem="veo-uc-BaK" firstAttribute="top" secondItem="lWM-hc-8dF" secondAttribute="topMargin" constant="20" id="mJf-wz-IYg"/>
                             <constraint firstItem="veo-uc-BaK" firstAttribute="leading" secondItem="lWM-hc-8dF" secondAttribute="leadingMargin" id="qkJ-Ad-4la"/>
                             <constraint firstAttribute="trailingMargin" secondItem="saM-Vu-2dd" secondAttribute="trailing" constant="-16" id="vEq-xa-Yas"/>
@@ -130,6 +140,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="filtersScrollView" destination="4jD-hX-4Hr" id="mAa-dj-gl8"/>
                         <outlet property="mainImageView" destination="saM-Vu-2dd" id="6vW-tT-96p"/>
                     </connections>
                 </viewController>
