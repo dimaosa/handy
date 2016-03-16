@@ -61,9 +61,11 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         NSLog("Nexus4Hand.sizeOfParentView = \(Nexus4Hand.sizeOfParentView)")
         NSLog("Size of UIScreen = \(UIScreen.mainScreen().bounds.size) ")
         
-        let filterMainImageView = FilterImage(imgView: mainImageView, image: image, phoneHand: Nexus4Hand)
-        let imgVi: UIImageView = filterMainImageView.filterImageView
-         mainImageView.addSubview(imgVi)
+        let someImageVIewWithSizeOfUIScreenWidth = mainImageView
+        someImageVIewWithSizeOfUIScreenWidth.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.width)
+        
+        let filterMainImageView = FilterImage(imgView: someImageVIewWithSizeOfUIScreenWidth, image: image, phoneHand: Nexus4Hand)
+         mainImageView = filterMainImageView.filterImageView
 //        //Background blur imageView with originalPhoto
 //        createBlurBackground(sizeMainImageView)
 //
@@ -212,6 +214,18 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
             
             x += bWidthHeight + constShift;
         }
+        let button = UIButton(frame: CGRectMake(x, 0, bWidthHeight, bWidthHeight))
+        button.userInteractionEnabled = true
+        
+        let someImgVi = UIImageView(frame: button.frame)
+        let Nexus4Hand = PhoneSkin(name: "Nexus4MenHand", size: CGSize(width: 375, height: 375), hand: UIImage(named: "handLGG4"), contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776))
+        
+        button.setImage(UIImage.imageWithView( FilterImage(imgView: someImgVi, image: image, phoneHand: Nexus4Hand).filterImageView), forState: .Normal)
+
+        
+        filtersScrollView.addSubview(button)
+        
+        x += bWidthHeight + constShift;
         
         filtersScrollView.contentSize = CGSizeMake(x, bWidthHeight);
         filtersScrollView.backgroundColor = UIColor.whiteColor()

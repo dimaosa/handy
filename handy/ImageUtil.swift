@@ -29,19 +29,16 @@ class ImageUtil: NSObject {
         let width: CGFloat
         let height: CGFloat
         
-        var theBiggerSide = BiggerImageSide.IDontKnow
         if _contextSize.width > _contextSize.height {
             posX = ((_contextSize.width - _contextSize.height) / 2)
             posY = 0
             width = _contextSize.height
             height = _contextSize.height
-            theBiggerSide = .Width
         } else {
             posX = 0
             posY = ((_contextSize.height - _contextSize.width) / 2)
             width = _contextSize.width
             height = _contextSize.width
-            theBiggerSide = .Height
         }
         
         let rect: CGRect = CGRectMake(posX, posY, width, height)
