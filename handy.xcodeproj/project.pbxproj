@@ -21,6 +21,7 @@
 		D2596E451C9079FE006BE186 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2596E441C9079FE006BE186 /* Helpers.swift */; };
 		D2596E471C908FA6006BE186 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2596E461C908FA6006BE186 /* GPUImage.framework */; };
 		D2596E491C908FA9006BE186 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2596E481C908FA9006BE186 /* Nuke.framework */; };
+		D25DE7891C99D8DC004EBF92 /* FilterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25DE7881C99D8DC004EBF92 /* FilterImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		D2596E441C9079FE006BE186 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		D2596E461C908FA6006BE186 /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GPUImage.framework; path = "Pods/../build/Debug-iphoneos/GPUImage.framework"; sourceTree = "<group>"; };
 		D2596E481C908FA9006BE186 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = "Pods/../build/Debug-iphoneos/Nuke.framework"; sourceTree = "<group>"; };
+		D25DE7881C99D8DC004EBF92 /* FilterImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterImage.swift; sourceTree = "<group>"; };
 		E88258656702F6FF27B28156 /* Pods-handy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-handy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-handy/Pods-handy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				D2521BFE1C88309300F6C68E /* Controllers */,
 				D2521BEE1C87311600F6C68E /* Main.storyboard */,
 				D2226F1C1C902E5A0020B9C7 /* Phone.swift */,
+				D25DE7881C99D8DC004EBF92 /* FilterImage.swift */,
 				D2596E441C9079FE006BE186 /* Helpers.swift */,
 				D2521BF11C87311600F6C68E /* Assets.xcassets */,
 				D2521BF31C87311600F6C68E /* LaunchScreen.storyboard */,
@@ -255,6 +258,7 @@
 				D2521BED1C87311600F6C68E /* ViewController.swift in Sources */,
 				D2521BEB1C87311600F6C68E /* AppDelegate.swift in Sources */,
 				D2521BFD1C87327500F6C68E /* PhotoViewController.swift in Sources */,
+				D25DE7891C99D8DC004EBF92 /* FilterImage.swift in Sources */,
 				D2226F1D1C902E5A0020B9C7 /* Phone.swift in Sources */,
 				D2521C221C89F7BB00F6C68E /* ImageUtil.swift in Sources */,
 			);
