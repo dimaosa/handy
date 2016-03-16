@@ -157,13 +157,13 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
 //        return scrollView
 //        
 //    }
-//    override func viewWillAppear(animated: Bool) {
-//        
-//        //properties of window
-//        self.navigationController?.setNavigationBarHidden(false, animated: true)
-//        super.viewWillAppear(animated)
-//    }
-//    
+    override func viewWillAppear(animated: Bool) {
+        
+        //properties of window
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        super.viewWillAppear(animated)
+    }
+//
 //    //MARK! - scrollView Zoom
 //    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
 //        return onScreenImgViw
