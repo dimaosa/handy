@@ -5,8 +5,7 @@ use_frameworks!
 
 target 'handy' do
 
-pod "Nuke"
-pod "GPUImage"
+pod 'Nuke'
 
 end
 

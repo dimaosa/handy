@@ -1,13 +1,10 @@
 PODS:
-  - GPUImage (0.1.7)
-  - Nuke (2.1.0)
+  - Nuke (2.3.0)
 
 DEPENDENCIES:
-  - GPUImage
   - Nuke
 
 SPEC CHECKSUMS:
-  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  Nuke: 30456df0bc128e52a683869bdf336daf3081ad69
+  Nuke: 20e778c682f30b469585a2b79ac15cd92a9f604d
 
 COCOAPODS: 0.39.0

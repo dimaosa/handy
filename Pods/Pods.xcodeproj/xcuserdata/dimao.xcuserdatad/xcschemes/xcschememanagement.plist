@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>GPUImage.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Nuke.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A96F8EB349CC8524F1D010FFD35D9CB</key>
+		<key>5BEBA1C9213854CA47F74B9B4C5E0263</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4DF42E73BE56153E373A10022230CB96</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EA0DD8ED489933744D70DD4A9719ED01</key>
+		<key>6EF18555BAD4A52D5942BCB420263F2F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
