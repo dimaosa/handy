@@ -74,7 +74,7 @@ class FilterImage : NSObject, UIScrollViewDelegate{
     internal func createPhoneSkinImage() -> UIImageView {
         let phone = UIImageView()
         
-        phone.image = phoneSkin.handImage
+        phone.image = phoneSkin.handImageCrop
         phone.contentMode = .ScaleAspectFill
         phone.userInteractionEnabled = true
         phone.frame = CGRectMake(

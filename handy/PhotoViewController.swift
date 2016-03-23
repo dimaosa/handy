@@ -14,7 +14,6 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     //TODO: Change this! should be some sort of JSON, and every entity should have it's own onScreen properties
     //create images
     let FiterImagesNames = ["picGreen", "picMountain", "picRelax", "picSnowRail", "picSkiWhite"]
-    
     @IBOutlet var filtersScrollView: UIScrollView!
 
 
@@ -43,45 +42,21 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         return CGSize(width: UIScreen.mainScreen().bounds.width,height:  UIScreen.mainScreen().bounds.width)
     }
     
+    let PhoneSkinsMainViewConstants = PhoneSkinsConstants(sizeMainImageView: CGSize(width: UIScreen.mainScreen().bounds.width,height:  UIScreen.mainScreen().bounds.width))
+    
+    var phone = UIImageView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        //TODO! Create class which will return imageView property with Ready image
-        
-        
-        //
+
         createFiltersScrollMenu()
         
+        let somePhone = PhoneSkinsMainViewConstants.phoneSkinsConstants[0]
         
-        //TODO! Every entity should have such property
-        let Nexus4Hand = PhoneSkin(
-            name: "Nexus4MenHand",
-            size: sizeMainImageView,
-            hand: UIImage(named: "handLGG4"),
-            contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776)
-        )
-        
-        
-        NSLog("Nexus4Hand.sizeOfParentView = \(Nexus4Hand.sizeOfParentView)")
-        NSLog("Size of UIScreen = \(UIScreen.mainScreen().bounds.size) ")
-        
-//        let someImageVIewWithSizeOfUIScreenWidth = UIImageView(frame: CGRectMake(0, 0, sizeMainImageView.width, sizeMainImageView.height))
-//        
-//        let filterMainImageView = FilterImage(imgView: someImageVIewWithSizeOfUIScreenWidth, image: image, phoneHand: Nexus4Hand)
-//        filterMainImageView.filterImageView.userInteractionEnabled = true
-//        mainImageView.userInteractionEnabled = true
-//        filterMainImageView.setZoomScale()
-//        
-//        mainImageView.addSubview(filterMainImageView.filterImageView)
-        //Background blur imageView with originalPhoto
         createBlurBackground(sizeMainImageView)
 
-        //On Screen imageView with originalPhoto
-        //createOnScreenScrollView(Nexus4Hand)
-        
         //Phone screen on
-        createPhoneSkinImage(Nexus4Hand)
+        createPhoneSkinImage(somePhone)
         
         //TODO! Make all generics as possible
         
@@ -89,13 +64,15 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK! - Imaage createion
     func createPhoneSkinImage(phoneInfo: PhoneSkin) {
-        let phone = UIImageView()
+        
+        phone = UIImageView()
         
         NSLog("mainImageView.bounds.size = \(mainImageView.bounds.size)")
         NSLog("mainImageView.frame.size = \(mainImageView.frame.size)")
 
         
-        phone.image = phoneInfo.handImage
+        
+        phone.image = phoneInfo.handImageCrop
         phone.contentMode = .ScaleAspectFill
         phone.userInteractionEnabled = true
         phone.frame = CGRectMake(
@@ -104,8 +81,13 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
             UIScreen.mainScreen().bounds.size.width,  // should not be here
             UIScreen.mainScreen().bounds.size.width   // should not be here
         )
+        if mainImageView.subviews.count > 1 {
+            mainImageView.subviews.last?.removeFromSuperview()
+        }
         phone.addSubview(createOnScreenScrollView(phone, phoneInfo: phoneInfo))
         mainImageView.addSubview(phone)
+        print("FUUUUU#UUUUUUUUUUUUUUUUUUUCOUNT\(mainImageView.subviews.count)")
+
     }
     
     func createBlurBackground(size: CGSize) {
@@ -216,19 +198,20 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         let constShift:CGFloat = 8
         var x: CGFloat = 0 //initial x coordinate of a filter button in frames scroll View
         let phoneSkins = PhoneSkinsConstants(sizeMainImageView: buttonSize)
+        var count = 0
         for phoneSkin in phoneSkins.phoneSkinsConstants {
             let button = UIButton(frame: CGRectMake(x, 0, bWidthHeight, bWidthHeight))
             button.userInteractionEnabled = true
             button.setImage(phoneSkin.handImage, forState: .Normal)
             
+            button.tag = count
+            count += 1
+            button.addTarget(self, action: "selectNewPhoneSkin:", forControlEvents: .TouchUpInside)
             filtersScrollView.addSubview(button)
             
             x += bWidthHeight + constShift;
         }
-        
-        
-        
-        
+
         
         //
 //        let button = UIButton(frame: CGRectMake(x, 0, bWidthHeight, bWidthHeight))
@@ -263,5 +246,11 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         
         filtersScrollView.contentSize = CGSizeMake(x, bWidthHeight);
         filtersScrollView.backgroundColor = UIColor.whiteColor()
+    }
+    
+    func selectNewPhoneSkin(sender: UIButton) {
+        if 0..<PhoneSkinsMainViewConstants.phoneSkinsConstants.count ~= sender.tag {
+            createPhoneSkinImage(PhoneSkinsMainViewConstants.phoneSkinsConstants[sender.tag])
+        }
     }
 }

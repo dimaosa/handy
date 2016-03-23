@@ -14,6 +14,7 @@ class PhoneSkin {
     let name: String?
     var sizeOfParentView: CGSize?
     let handImage: UIImage?
+    let handImageCrop: UIImage?
     let contextScreenSize: CGRect
     var startPoint: CGPoint {
         return CGPoint(
@@ -27,10 +28,16 @@ class PhoneSkin {
             height: sizeOfParentView!.height * contextScreenSize.height - startPoint.y
         )
     }
-    init(name phoneName: String?, size parentSize: CGSize?, hand handImageName: UIImage?, contextScreenSize con: CGRect){
+    init(name phoneName: String?, size parentSize: CGSize?, hand handImageName: UIImage?, contextScreenSize con: CGRect, handCrop hic: UIImage? = nil){
         name = phoneName
         sizeOfParentView = parentSize
         handImage = handImageName
         contextScreenSize = con
+        
+        if hic == nil {
+            handImageCrop = UIImage(named: name! + "Crop")
+        } else {
+            handImageCrop = hic
+        }
     }
 }

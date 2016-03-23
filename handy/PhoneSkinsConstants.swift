@@ -13,8 +13,10 @@ class PhoneSkinsConstants {
     
     var size: CGSize {
         didSet{
+            
             for phone in phoneSkinsConstants {
                 phone.sizeOfParentView = size
+                
             }
         }
     }
@@ -42,11 +44,24 @@ class PhoneSkinsConstants {
             size: CGSize(),
             hand: UIImage(named: "picSnowRail"),
             contextScreenSize: CGRectMake(0.244, 0.344, 0.791, 0.662)
+        ),
+        PhoneSkin(
+            name: "picCreative",
+            size: CGSize(),
+            hand: UIImage(named: "picCreative"),
+            contextScreenSize: CGRectMake(0.321, 0.247, 0.677, 0.869)
         )
         
     ]
 
     init(sizeMainImageView: CGSize) {
+        
         size = sizeMainImageView
+        
+        for phone in phoneSkinsConstants {
+            phone.sizeOfParentView = size
+            
+        }
+
     }
 }
