@@ -12,7 +12,7 @@ import UIKit
 class PhoneSkin {
     
     let name: String?
-    let sizeOfParentView: CGSize?
+    var sizeOfParentView: CGSize?
     let handImage: UIImage?
     let contextScreenSize: CGRect
     var startPoint: CGPoint {

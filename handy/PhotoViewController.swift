@@ -210,41 +210,56 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     func createFiltersScrollMenu() {
         filtersScrollView.userInteractionEnabled = true
         filtersScrollView.showsHorizontalScrollIndicator = false
+        
         let bWidthHeight = filtersScrollView.frame.size.height
+        let buttonSize = CGSize(width: bWidthHeight, height: bWidthHeight)
         let constShift:CGFloat = 8
-        var x: CGFloat = 0 + constShift //initial x coordinate of a filter button in frames scroll View
-
-        for image in FiterImagesNames {
+        var x: CGFloat = 0 //initial x coordinate of a filter button in frames scroll View
+        let phoneSkins = PhoneSkinsConstants(sizeMainImageView: buttonSize)
+        for phoneSkin in phoneSkins.phoneSkinsConstants {
             let button = UIButton(frame: CGRectMake(x, 0, bWidthHeight, bWidthHeight))
             button.userInteractionEnabled = true
-            button.setImage(UIImage(named: image), forState: .Normal)
+            button.setImage(phoneSkin.handImage, forState: .Normal)
             
             filtersScrollView.addSubview(button)
             
             x += bWidthHeight + constShift;
         }
-        let button = UIButton(frame: CGRectMake(x, 0, bWidthHeight, bWidthHeight))
-        let buttonSize = CGSize(width: button.frame.width, height:button.frame.height)
-        let Nexus4Hand = PhoneSkin(
-            name: "Nexus4MenHand",
-            size: buttonSize,
-            hand: UIImage(named: "handLGG4"),
-            contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776)
-        )
-        var buttonFrame = button.frame
-        buttonFrame.origin.x = 0
-        buttonFrame.origin.y = 0
-        let buttonImageView = UIImageView(frame: buttonFrame)
         
-        let filImg = FilterImage(imgView: buttonImageView, image: image, phoneHand: Nexus4Hand)
         
-        let imageForButton: UIImage? = UIImage.imageWithView( filImg.filterImageView)
-        button.addSubview(filImg.filterImageView)
-        button.setImage(imageForButton, forState: .Normal)
         
-        filtersScrollView.addSubview(button)
         
-        x += bWidthHeight + constShift;
+        
+        //
+//        let button = UIButton(frame: CGRectMake(x, 0, bWidthHeight, bWidthHeight))
+//        let buttonSize = CGSize(width: button.frame.width, height:button.frame.height)
+//        
+//        let Nexus4Hand = PhoneSkin(
+//            name: "Nexus4MenHand",
+//            size: buttonSize,
+//            hand: UIImage(named: "handLGG4"),
+//            contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776)
+//        )
+//  
+//        var buttonFrame = button.frame
+//        buttonFrame.origin.x = 0
+//        buttonFrame.origin.y = 0
+//        let buttonImageView = UIImageView(frame: buttonFrame)
+//        
+//        let filImg = FilterImage(imgView: buttonImageView, image: image, phoneHand: Nexus4Hand)
+//        
+//        let imageForButton: UIImage? = UIImage.imageWithView( filImg.filterImageView)
+//        button.addSubview(filImg.filterImageView)
+//        button.setImage(imageForButton, forState: .Normal)
+//        
+//        filtersScrollView.addSubview(button)
+//        
+//        x += bWidthHeight + constShift;
+//
+        
+        
+        
+        
         
         filtersScrollView.contentSize = CGSizeMake(x, bWidthHeight);
         filtersScrollView.backgroundColor = UIColor.whiteColor()
