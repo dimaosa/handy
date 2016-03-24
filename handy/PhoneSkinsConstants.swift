@@ -43,7 +43,7 @@ class PhoneSkinsConstants {
             name: "picSnowRail",
             size: CGSize(),
             hand: UIImage(named: "picSnowRail"),
-            contextScreenSize: CGRectMake(0.244, 0.344, 0.791, 0.662)
+            contextScreenSize: CGRectMake(0.244, 0.336, 0.817, 0.662)
         ),
         PhoneSkin(
             name: "picCreative",

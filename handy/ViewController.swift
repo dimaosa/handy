@@ -53,7 +53,7 @@ class ViewController: UIViewController,
             presentViewController(picker, animated: true,completion:nil)
         } else {
             noCamera()
-            NSLog("No Fucking camera, poor guy!")
+            NSLog("No camera")
         }
     }
 

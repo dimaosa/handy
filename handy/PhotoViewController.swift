@@ -51,7 +51,7 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
 
         createFiltersScrollMenu()
         
-        let somePhone = PhoneSkinsMainViewConstants.phoneSkinsConstants[0]
+        let somePhone = PhoneSkinsMainViewConstants.phoneSkinsConstants[3]
         
         createBlurBackground(sizeMainImageView)
 
@@ -67,26 +67,20 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         
         phone = UIImageView()
         
-        NSLog("mainImageView.bounds.size = \(mainImageView.bounds.size)")
-        NSLog("mainImageView.frame.size = \(mainImageView.frame.size)")
-
-        
-        
         phone.image = phoneInfo.handImageCrop
         phone.contentMode = .ScaleAspectFill
         phone.userInteractionEnabled = true
         phone.frame = CGRectMake(
             0,
             0,
-            UIScreen.mainScreen().bounds.size.width,  // should not be here
-            UIScreen.mainScreen().bounds.size.width   // should not be here
+            sizeMainImageView.width,
+            sizeMainImageView.height
         )
         if mainImageView.subviews.count > 1 {
             mainImageView.subviews.last?.removeFromSuperview()
         }
         phone.addSubview(createOnScreenScrollView(phone, phoneInfo: phoneInfo))
         mainImageView.addSubview(phone)
-        print("FUUUUU#UUUUUUUUUUUUUUUUUUUCOUNT\(mainImageView.subviews.count)")
 
     }
     
@@ -129,7 +123,6 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
     func createOnScreenScrollView(parentView: UIView, phoneInfo: PhoneSkin) -> UIScrollView{
         onScreenImgViw = UIImageView(image: image)
         onScreenImgViw.sizeToFit()
-        print("---------phoneInfo.startPoint = \(phoneInfo.startPoint)")
         scrollView = UIScrollView(frame: CGRectMake(
             phoneInfo.startPoint.x + parentView.frame.origin.x,
             phoneInfo.startPoint.y + parentView.frame.origin.y,
@@ -169,8 +162,6 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.minimumZoomScale = min(widthScale, heightScale)
         scrollView.zoomScale = heightScale
-        print( imageViewSize, scrollViewSize, imageViewSize.width / 2 - scrollViewSize.width / 2)
-        print(scrollView.contentSize)
         scrollView.contentOffset = CGPoint(
             x: scrollView.contentSize.width / 2 - scrollViewSize.width / 2,
             y: 0.0)
