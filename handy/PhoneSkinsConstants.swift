@@ -28,6 +28,12 @@ class PhoneSkinsConstants {
             contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776)
         ),
         PhoneSkin(
+            name: "picMountain",
+            size: CGSize(),
+            hand: UIImage(named: "picMountain"),
+            contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776)
+        ),
+        PhoneSkin(
             name: "picRelax",
             size: CGSize(),
             hand: UIImage(named: "picRelax"),
