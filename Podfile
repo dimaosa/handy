@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'handy' do
 
+#pod 'Alamofire', '~> 3.0'
 pod 'Nuke'
-
 end
 

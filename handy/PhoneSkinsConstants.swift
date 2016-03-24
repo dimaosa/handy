@@ -25,7 +25,7 @@ class PhoneSkinsConstants {
             name: "picAppleWomanHand",
             size: CGSize(),
             hand: UIImage(named: "picAppleWomanHand"),
-            contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776)
+            contextScreenSize: CGRectMake(0.373, 0.309, 0.621, 0.743)
         ),
         PhoneSkin(
             name: "picMountain",
