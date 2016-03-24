@@ -22,9 +22,9 @@ class PhoneSkinsConstants {
     }
     var phoneSkinsConstants = [
         PhoneSkin(
-            name: "picMountain",
+            name: "picAppleWomanHand",
             size: CGSize(),
-            hand: UIImage(named: "picMountain"),
+            hand: UIImage(named: "picAppleWomanHand"),
             contextScreenSize: CGRectMake(0.354, 0.384, 0.573, 0.776)
         ),
         PhoneSkin(
